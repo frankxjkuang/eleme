@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/address.css">
+	<link rel="stylesheet" href="css/rlist.css">
+	<script src="js/rem.js"></script>
+</head>
+<body>
+	<div id="address" class="section">
+		<div class="inner-box">
+			<div class="header">
+				<div class="input-wrap">
+					<a href="#search" class="back"></a>
+					<h2>地址搜索页面</h2>
+				</div>	
+				<div class="search-wrap">
+					<input id="addr_kwd" class="poi" type="text" placeholder="请输入地址">
+					<a href="javascript:void(0);" class="btnClean"></a>
+				</div>
+			</div>
+			<div class="addrContent"></div>
+		</div>
+	</div>
+	<div id="detail" class="section">
+		<a href="#address">食物详情页</a>
+	</div>
+	<div id="rlist" class="section">
+		<!-- <a href="#detail">商家列表页</a> -->
+		<div class="header">
+			<div class="place">
+				<div class="placeName">
+					<a href="#search" class="back">
+						地址搜索页面
+					</a>
+				</div>	
+				<div class="weather">
+					<p class="temp">23°</p>
+					<p class="desc">阴</p>
+					<div class="img-box">
+						<img src="https://fuss10.elemecdn.com/3/73/19e992e612e983f517e2690cb3e16png.png?imageMogr/format/webp/thumbnail/!69x69r/gravity/Center/crop/69x69/" alt="weather">
+					</div>		
+				</div>
+			</div>	
+			<input id="food_kwd" class="poi" type="text" placeholder="搜索商家、商品">
+			<div class="hotword">
+			</div>
+		</div>
+		<div class="banner">
+			<a href="#">
+				<div class="img-box"></div>
+				<span class="desc"></span>
+			</a>
+		</div>
+		<h3 class="title">推荐商家</h3>
+		<div class="recommend">
+			<div class="template">
+				<div class="shopLogo">
+					<img class="sLogo" src="https://fuss10.elemecdn.com/e/45/11da15366f387d2461a24983a36dajpeg.jpeg?imageMogr/format/webp/" alt="shoplogo">
+				</div>
+				<div class="shopMain">
+					<div class="lineone line">
+						<div class="line-left">
+							<h3 class="shopName">食其家（领事馆路店）</h3>
+						</div>
+						<div class="line-right">
+							<div class="supportWrap">
+							
+							</div>
+						</div>
+					</div>
+					<div class="linetwo line">
+						<div class="line-left">
+							<span class="rateWrap">
+								<i class="rate"></i>
+							</span>
+							<span class="score">4.6</span>
+							<span class="sale">月售2014单</span>
+						</div>
+						<div class="line-right">
+							<span class="ontime">准时达</span>
+							<span class="trans">蜂鸟传送</span>
+						</div>
+					</div>
+					<div class="linethree line">
+						<div class="line-left">
+							<span class="moneyLimit">¥<i>20</i>起送</span> /
+							<span class="transPay"> 配送费¥4</span>
+						</div>
+						<div class="line-right">
+							<span class="distance">1.59km</span> /
+							<span class="time">29分钟</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="search" class="section">
+		<a href="#rlist">商家搜索页</a>
+	</div>
+
+	<script src="js/zepto.js"></script>
+	<script src="module/pageModule.js"></script>
+	<script src="module/addressModule.js"></script>
+	<script src="module/detailModule.js"></script>
+	<script src="module/rlistModule.js"></script>
+	<script src="module/searchModule.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
