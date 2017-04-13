@@ -10,7 +10,6 @@ body {
 	font-size: .13rem;
 }
 .section {
-	height: 100%;
 	display: none;
 }
 i, em , b, strong {
@@ -26,6 +25,7 @@ li {
 }
 #address {
 	background: pink;
+	height: 100%;
 }
 #rlist {
 	background: #f4f4f4;

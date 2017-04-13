@@ -8,6 +8,7 @@ rlistModule = $.extend(rlistModule, {
 		var _this = this;
 		window.addEventListener('scroll', debounce(function(event){
 			console.log('正在进行滚动...');
+
 			//判断页面滑动了底部
 			if(window.scrollY + window.innerHeight === _this.dom.height()) {
 				console.log('页面滑动了最底部...');
@@ -21,7 +22,6 @@ rlistModule = $.extend(rlistModule, {
 		    auto: false,
 		    callback: function(pos) {
 			  	//当滑动结束后 所需要执行的方法
-			  	console.log(pos); //pos当前滑动板块的索引值
 			  	li_list.eq(pos).addClass('cur');
 			  	li_list.eq(pos).siblings().removeClass('cur');
 			}
@@ -44,7 +44,11 @@ rlistModule = $.extend(rlistModule, {
 		
 		var lat = hash.split('-')[1],
 			lng = hash.split('-')[2],
+			addr = hash.split('-')[3],
 			_this = this;
+
+		// 当前地址名称
+		$('#rlist .back').text(addr);
 
 		// 加载商家列表
 		$.ajax({
@@ -78,10 +82,17 @@ rlistModule = $.extend(rlistModule, {
 					}
 					// 商店 logo
 					child.find(".sLogo").attr('src', _imgsrc);
+
 					// 是否品牌
 					if(res[i].is_premium) {
 						child.find('.shopName').addClass('isPremium');
 					}
+					// 是否蜂鸟专送
+					if(res[i].delivery_mode) {
+						child.find('.trans').text(res[i].delivery_mode.text);
+					}
+					// 准时达
+
 					// 商店名字
 					child.find(".shopName").text(res[i].name);
 					// 评分

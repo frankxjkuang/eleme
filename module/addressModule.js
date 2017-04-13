@@ -32,7 +32,7 @@ addressModule = $.extend(addressModule, {
 				var html = "";
 
 				for(var i = 0, iLen = res.length; i < iLen; i++) {
-					html += '<div class="addrInfo"><div class="addrName"><a href="#rlist-'+res[i].latitude+'-'+ res[i].longitude +'">'+ res[i].name +'</div><p class="desc">'+ res[i].address +'</p></div>';
+					html += '<div class="addrInfo"><div class="addrName"><a href="#rlist-'+res[i].latitude+'-'+ res[i].longitude +'-'+ res[i].name +'">'+ res[i].name +'</div><p class="desc">'+ res[i].address +'</p></div>';
 				}
 				
 				$(".addrContent").html(html);

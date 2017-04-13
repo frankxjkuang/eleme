@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 	padding: .2rem .28rem;
 	color: #fff;
+	padding-bottom: 0;
 }
 #rlist .header img {
 	width: .27rem;
@@ -45,12 +46,12 @@
 	text-align: center;
 	color: #919191;
 	border: none;
-	/* margin: .075rem 0; */
 }
 #rlist .hotword {
 	white-space: nowrap;
     overflow-x: auto;
 	overflow-y: hidden;
+	margin-top: .1rem;
 }
 #rlist .hotword a{
 	display: inline-block; 
