@@ -50,14 +50,24 @@
 			</div>
 		</div>
 		<div class="banner">
-			<div class="item1 item">
-				<a href="javascript:void(0);" class="">
-					<div class="img-box"></div>
-					<span class="desc"></span>
-				</a>
-			</div>
-			<div class="item2 item">
-
+			<div class="swipe" id="mySwipe">
+				<div class="swipe-wrap">
+				    <div class="item" style="background: blue">
+				        第一个板块
+				    </div>
+				    <div class="item" style="background: red">
+				        第二个板块
+				    </div>
+				    <div class="item" style="background: black">
+				        <!-- 滑动的第三个版块 -->
+				        
+				    </div>
+				</div>
+				<ul id="position" class="hidden">
+				    <li class="cur"></li>
+				    <li style="margin-left:-5px"></li>
+				    <li style="margin-left:-5px"></li>
+				</ul>
 			</div>
 		</div>
 		<h3 class="title">推荐商家</h3>
@@ -109,6 +119,7 @@
 	</div>
 
 	<script src="js/zepto.js"></script>
+	<script src="lib/swipe.js"></script>
 	<script src="module/pageModule.js"></script>
 	<script src="module/addressModule.js"></script>
 	<script src="module/detailModule.js"></script>

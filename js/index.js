@@ -20,7 +20,7 @@ function routeControl() {
 	khash = hash;
 	if(hash.indexOf('rlist') !== -1) {
 		khash = 'rlist';
-		rlistModule.loadList(hash);
+		rlistModule.loadList(hash, true);
 	}
 
 	var module = HashModuleMap[khash];

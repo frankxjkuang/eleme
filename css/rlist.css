@@ -45,7 +45,7 @@
 	text-align: center;
 	color: #919191;
 	border: none;
-	margin: .075rem 0;
+	/* margin: .075rem 0; */
 }
 #rlist .hotword {
 	white-space: nowrap;
@@ -63,19 +63,55 @@
 	background: #fff;
 	position: relative;
 }
-#rlist .item {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
+/* 轮播图 */
+.swipe{
+    overflow: hidden;
+    visibility: hidden;
+    position:relative;
+    height: 100%;
+}
+.swipe-wrap{
+    overflow-x:hidden;
+    position:relative;
+    height: 100%;
+}
+.swipe-wrap > div {
+    float: left;
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+.swipe .item {
 	height: 100%;
 }
-#rlist .item1 {
-	background: yellow;
+/* 小数点布局 */
+#position{
+   position: absolute;
+   bottom: 0rem;
+   left: 0;
+   margin-top: 0.426667rem;
+   margin-bottom: 0.213333rem;
+   margin: 0;
+   opacity: 0.4;
+   width: 100%;
+   filter: alpha(opacity=50);
+   text-align: center;
 }
-#rlist .item2 {
-	background: pink;
+ 
+#position li{
+      width: .1rem;
+      height: .1rem;
+      margin: .1rem .1rem;
+      display: inline-block;
+      -webkit-border-radius: 50%;
+      border-radius: 5px;
+      background-color: #999;
 }
+#position li.cur{
+    background-color: black;
+}
+
+
 #rlist .title {
 	margin-top: .1rem;
 	border-top: 1px solid #eee;
@@ -116,6 +152,7 @@
 	font-size: .12rem;
     padding: .01rem .01rem;
     border-radius: 3px;
+    box-sizing: border-box;
 }
 #rlist .shopMain .trans {
 	background-color: #2395ff;
@@ -124,6 +161,16 @@
 #rlist .shopMain .ontime {
 	border: 1px solid #2395ff;
     color: #2395ff;
+}
+#rlist .supportWrap i {
+	font-size: .1rem;
+    line-height: .14rem;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: .04rem;
+    color: #999;
+    margin-left: .04rem;
 }
 #rlist .score {
 	color: #ff6000;
@@ -135,7 +182,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-#rlist .shopName:before {
+#rlist .isPremium:before {
 	margin-right: .02rem;
     padding: 0.01rem;
     height: .14rem;
@@ -149,7 +196,7 @@
     font-weight: 700;
     font-size: .1rem;
     line-height: .14rem;
-    position: relative;
+   /*  position: relative; */
 }
 #rlist .line {
 	display: flex;
@@ -157,4 +204,16 @@
 }
 #rlist .lineone, #rlist .linetwo {
 	margin-bottom: .045rem;
+}
+.recommend:after{
+	content: '正在加载更多商家...';
+	display: 'block';
+	height: 40px;
+	background: orange;
+	color: black; 
+	line-height: 40px;
+	text-align: center;
+}
+.noDate .recommend:after{
+	content: '没有更多商家了...';
 }
