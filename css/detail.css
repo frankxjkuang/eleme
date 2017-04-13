@@ -25,23 +25,57 @@
 	padding-left: .1rem;
 	color: #fff;
 	position: relative;
+	padding-top: .03rem;
 }
 #detail .desc p {
 	font-size: .1rem;
 	line-height: .22rem;
 }
+#detail .desc span {
+	display: inline-block;
+}
+#detail .promotion_info {
+	width: 2.7rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 #detail .desc img {
 	position: absolute;
 }
-#detail .activity a {
+#detail .activity-box span{
+	margin-left: .16rem
+}
+#detail .activity-box a {
 	color: #fff;
 	font-size: .1rem;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+#detail .activity-new a:before {
+	content: '新';
+	display: inline-block;
+	background-color: rgb(112, 188, 70);
+	position: absolute;
+}
+#detail .activity-diff a:before {
+	content: '减';
+	display: inline-block;
+	background-color: rgb(112, 188, 70);
+	position: absolute;
 }
 #detail .shopName {
 	font-size: .14rem;
 }
 #detail .header-main > a {
 	display: flex;
+	position: relative;
+}
+#detail .header-main .check-info {
+	position: absolute;
+	right: 0;
+	top: .22rem;
 }
 #detail .shop-tab {
 	height: .45rem;
@@ -64,6 +98,10 @@
 #detail .menu-left {
 	width: .85rem;
 	background-color: #f8f8f8;
+}
+#detail .menu-left-main li{
+	padding: .175rem .075rem;
+	border-top: 1px solid #eee;
 }
 #detail .menu-right {
 	flex: 1;
@@ -88,3 +126,5 @@
 	height: .48rem;
 	background-color: #464648;
 }
+
+
