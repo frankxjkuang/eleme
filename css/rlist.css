@@ -51,7 +51,7 @@
 	white-space: nowrap;
     overflow-x: auto;
 	overflow-y: hidden;
-	margin-top: .1rem;
+	margin-top: .01rem;
 }
 #rlist .hotword a{
 	display: inline-block; 
@@ -84,6 +84,9 @@
 }
 .swipe .item {
 	height: 100%;
+	overflow: hidden;
+	padding-top: .1rem;
+	box-sizing: border-box;
 }
 /* 小数点布局 */
 #position{
@@ -112,21 +115,42 @@
     background-color: black;
 }
 
+/* 轮播图内容 */
+#rlist .banner .containerWrap {
+	width: 25%;
+	height: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	text-align: center;
+}
+#rlist .banner .container {
+	width: 100%;
+    height: .4rem;
+    text-align: center;
+}
+#rlist .banner .container img {
+	height: .4rem;
+	width: .4rem;
+}
 
-#rlist .title {
+#rlist .re-title {
 	margin-top: .1rem;
 	border-top: 1px solid #eee;
 	height: .34rem;
 	line-height: .34rem;
 	padding-left: .15rem;
+	background: #fff;
 }
 #rlist .recommend {
 	
 }
 #rlist .template {
-	display: flex;
 	background: #fff;
 	border-top: 1px solid #eee;
+}
+#rlist .template a {
+	display: flex;
+	width: 100%;
 }
 #rlist .template:first-of-type {
 	display: none;
@@ -218,3 +242,4 @@
 .noDate .recommend:after{
 	content: '没有更多商家了...';
 }
+

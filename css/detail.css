@@ -1,0 +1,90 @@
+#detail .header {
+	height: 1.31rem;
+	background: #c4bdcc;
+	display: flex;
+	flex-direction: column;
+	padding: 0 .1rem;
+}
+#detail .shop-tab {
+	height: .91rem;
+}
+#detail .logo {
+	width: .65rem;
+	height: .65rem;
+	border-radius: .06rem;
+	overflow: hidden;
+}
+#detail .logo img {
+	width: 100%;
+	height: 100%;
+}
+#detail .backrlist {
+	padding: .08rem .1rem;
+}
+#detail .desc {
+	padding-left: .1rem;
+	color: #fff;
+	position: relative;
+}
+#detail .desc p {
+	font-size: .1rem;
+	line-height: .22rem;
+}
+#detail .desc img {
+	position: absolute;
+}
+#detail .activity a {
+	color: #fff;
+	font-size: .1rem;
+}
+#detail .shopName {
+	font-size: .14rem;
+}
+#detail .header-main > a {
+	display: flex;
+}
+#detail .shop-tab {
+	height: .45rem;
+	display: flex;
+}
+#detail .shop-tab > div {
+	width: 50%;
+	text-align: center;
+	line-height: .45rem;
+}
+/* 菜单 */
+#detail .menu {
+	flex: 1;
+	display: flex;
+}
+#detail .menu > div {
+	overflow: hidden;
+	position: relative;
+}
+#detail .menu-left {
+	width: .85rem;
+	background-color: #f8f8f8;
+}
+#detail .menu-right {
+	flex: 1;
+	background-color: pink;
+}
+#detail .food-title {
+	background-color: #f8f8f8;
+}
+#detail .food-info {
+	display: flex;
+	border-bottom: 1px solid #e2e2e2;
+}
+#detail .food-img {
+	width: .52rem;
+	margin-right: .104rem;
+}
+#detail .food-img img {
+	width: 100%;
+}
+/* 底部加入购物车 */
+#detail .cart {
+	height: .48rem;
+	background-color: #464648;
+}

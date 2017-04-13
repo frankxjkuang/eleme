@@ -34,5 +34,7 @@ li {
 	background: yellow;
 }
 #detail {
-	background: blue;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }

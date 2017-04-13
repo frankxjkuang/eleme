@@ -45,6 +45,7 @@ rlistModule = $.extend(rlistModule, {
 		var lat = hash.split('-')[1],
 			lng = hash.split('-')[2],
 			addr = hash.split('-')[3],
+			ghash = hash.split('-')[4],
 			_this = this;
 
 		// 当前地址名称
@@ -53,6 +54,7 @@ rlistModule = $.extend(rlistModule, {
 		// 加载商家列表
 		$.ajax({
 			url: 'https://mainsite-restapi.ele.me/shopping/restaurants',
+			type: 'get',
 			data: {
 				latitude:lat,
 				longitude:lng,
@@ -73,6 +75,13 @@ rlistModule = $.extend(rlistModule, {
 					var child = $(".template:first-of-type").clone(true); // 克隆节点
 					child.appendTo(".recommend");
 
+					// 设置路由     // "+ res[i].id +"-"+ res[i].latitude +"-"+ res[i].longitude +"
+					child.find('a').attr('href', '#detail-'+res[i].id+'-'+res[i].latitude+'-'+res[i].longitude+'');
+					child.find('a').css({
+						'margin': 0,
+						'padding': 0
+					})
+
 					var imgsrc = res[i].image_path;
 					var _imgsrc = 'https://fuss10.elemecdn.com/' + imgsrc.substring(0, 1) + '/' + imgsrc.substring(1, 3) + '/' + imgsrc.substr(3);
 					if(imgsrc.indexOf('jpeg') === -1) { // 图片格式为 png
@@ -87,11 +96,14 @@ rlistModule = $.extend(rlistModule, {
 					if(res[i].is_premium) {
 						child.find('.shopName').addClass('isPremium');
 					}
-					// 是否蜂鸟专送
+					// 是否蜂鸟专送 准时达
 					if(res[i].delivery_mode) {
 						child.find('.trans').text(res[i].delivery_mode.text);
+						child.find('.ontime').text('准时达');
+					}else {
+						console.log(child);
+						child.find('div').remove('.soprt');
 					}
-					// 准时达
 
 					// 商店名字
 					child.find(".shopName").text(res[i].name);
@@ -124,6 +136,7 @@ rlistModule = $.extend(rlistModule, {
 		// 加载附近美食搜索的热词
 		$.ajax({
 			url: 'https://mainsite-restapi.ele.me/shopping/v3/hot_search_words',
+			type: 'get',
 			data: {
 				latitude:lat,
 				longitude:lng,
@@ -144,6 +157,7 @@ rlistModule = $.extend(rlistModule, {
 		// 加载天气信息
 		$.ajax({
 			url: 'https://mainsite-restapi.ele.me/bgs/weather/current',
+			type: 'get',
 			data: {
 				latitude:lat,
 				longitude:lng,
@@ -168,6 +182,45 @@ rlistModule = $.extend(rlistModule, {
 			},
 			error: function() {
 				console.log("faild");
+			}
+		});
+
+		// 轮播图
+		$.ajax({
+			url: 'https://mainsite-restapi.ele.me/v2/index_entry',
+			type: 'get',
+			data: {
+				//?geohash=wm6n237yrg2f&group_type=1&flags[]=F
+				geohash: ghash,
+				group_type:1,
+				flags:['F']
+			},
+			success: function(res) {
+				console.log("轮播内容", res);	
+
+				var html = '';
+				for(var i = 0, iLen = res.length; i < iLen; i++) {
+					// https://fuss10.elemecdn.com/b/7e/d1890cf73ae6f2adb97caa39de7fcjpeg.jpeg?imageMogr/format/webp/
+					var imgsrc = 'https://fuss10.elemecdn.com'+res[i].image_url+'?imageMogr/format/webp/';
+
+					//console.log(imgsrc);
+					html += 
+					'<a href="javascript:void(0)" class="containerWrap">'+
+					 	'<div class="container">'+
+					 		'<img alt="'+ res[i].title +'" src="'+ imgsrc +'">'+
+					 	'</div>'+ 
+					 	'<span class="title">'+ res[i].title +'</span>'+
+					'</a>';
+					if(i === 7) {
+						$('.banner .item1').html(html);
+						html = '';
+					}
+				}
+
+				$('.banner .item2').html(html);
+			},
+			error: function() {
+				console.log('获取数据失败...');
 			}
 		});
 	}

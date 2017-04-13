@@ -23,7 +23,12 @@ function routeControl() {
 		rlistModule.loadList(hash, true);
 	}
 
-	var module = HashModuleMap[khash];
+	if(hash.indexOf('detail') !== -1) {
+		khash = 'detail';
+		detailModule.loadInfo(hash);
+	}
+
+	var module = HashModuleMap[khash]; // 动态获取对象属性
 
 	prevModule = currModule;
 	currModule = module;
