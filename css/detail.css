@@ -1,3 +1,8 @@
+#detail .detail-wrap {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
 #detail .header {
 	height: 1.31rem;
 	background: #c4bdcc;
@@ -99,32 +104,182 @@
 	width: .85rem;
 	background-color: #f8f8f8;
 }
+#detail .menu-left .active{
+	background: #fff;
+	border-left: .02rem solid #3190e8;
+	font-weight: bold;
+}
 #detail .menu-left-main li{
 	padding: .175rem .075rem;
 	border-top: 1px solid #eee;
+	box-sizing: border-box;
+	color: #666;
+	border-left: .02rem solid transparent;
 }
 #detail .menu-right {
 	flex: 1;
-	background-color: pink;
 }
 #detail .food-title {
 	background-color: #f8f8f8;
+	display: flex;
+	padding: .075rem .1rem;
+	position: relative;
+}
+#detail .food-main > div{
+	color: #999;
+	font-size: .1rem;
+}
+#detail .food-main .food-name {
+	color: #333;
+	font-size: .14rem;
+	font-weight: bold;
+}
+#detail .food-item .title {
+	color: #333;
+	font-size: .14rem;
+}
+#detail .food-item .info {
+	color: #999;
+	position: absolute;
+	right: .2rem;
+}
+#detail .food-item .desc {
+	color: #999;
+	font-size: .12rem;
+}
+#detail .food-item .desc-phrase {
+	font-size: .08rem;
 }
 #detail .food-info {
 	display: flex;
+	position: relative;
 	border-bottom: 1px solid #e2e2e2;
+	padding: .1rem .05rem;
+}
+#detail .food-info .cart-operate {
+	position: absolute;
+	right: 0;
+	bottom: .1rem;
+	display: flex;
+}
+#detail .operation {
+	width: .2rem;
+	height: .2rem;
+	text-align: center;
+	line-height: .18rem;
+	border: 1px solid #3190e8;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+#detail .food-info .cart-operate > div {
+	margin-right: .1rem;
+}
+#detail .minus {
+	color: #3190e8;
+}
+#detail .num {
+	color: #666;
+}
+#detail .plus {
+	background: #3190e8;
+	color: #fff;
 }
 #detail .food-img {
 	width: .52rem;
+	height: .52rem;
 	margin-right: .104rem;
 }
 #detail .food-img img {
-	width: 100%;
+	width: .52rem;
+	height: .52rem;
+}
+#detail .food-price {
+	margin-top: .1rem;
+}
+#detail .sym {
+	font-size: .08rem;
+	color: #f60;
+}
+#detail .price {
+	font-size: .13rem;
+	color: #f60;
 }
 /* 底部加入购物车 */
 #detail .cart {
 	height: .48rem;
 	background-color: #464648;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	color: #fff;
+	width: 100%;
 }
-
+#detail .cart-img {
+	position: relative;
+	top: -.14rem;
+	margin-left: .2rem;
+}
+#detail .total-price {
+	margin-left: -1.4rem;
+}
+#detail .to-start {
+	line-height: .48rem;
+	text-align: center;
+	padding: 0 .04rem;
+	background-color: #5b5b5d;
+}
+#detail .cart-view {
+	position: absolute;
+	bottom: .48rem;
+	width: 100%;
+	background-color: pink;
+	display: none;
+}
+#detail .cart-layer {
+	background: gray;
+	opacity: 0.6;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top:0;
+	bottom: 0;
+	z-index: 10;
+}
+#detail .cart-bottom {
+	z-index: 11;
+	position: relative;
+}
+#detail .cart-list {
+	position: relative;
+	z-index: 11;
+	color: #333;
+	background: white;
+}
+#detail .cart-info {
+	padding: .075rem .125rem;
+	position: relative;
+}
+#detail .cart-info span {
+	display: inline-block;
+}
+#detail .cart-desc {
+	width: 2.04rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #333;
+	font-size: .14rem;
+}
+#detail .cart-price {
+	margin-left: .25rem;
+    margin-right: .25rem;
+    color: #f60;
+    font-size: .14rem;
+}
+#detail .cart-price i {
+	font-size: .08rem;
+}
+#detail .cart-info .num {
+ 	margin: 0 .04rem;
+}
 

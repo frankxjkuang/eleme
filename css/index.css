@@ -31,10 +31,8 @@ li {
 	background: #f4f4f4;
 }
 #search {
-	background: yellow;
+	
 }
 #detail {
-	display: flex;
-	flex-direction: column;
 	height: 100%;
 }

@@ -27,81 +27,72 @@
 		</div>
 	</div>
 	<div id="detail" class="section" style="display: none;">
-		<!-- <a href="#address">食物详情页</a> -->
-		<div class="header">
-			<a href="#rlist" class="backrlist">
-				<img src="imgs/detail-back.jpg" alt="back">
-			</a>
-			<!-- <div class="header-main">
-				<a href="">
-					<div class="logo">
-						<img src="https://fuss10.elemecdn.com/d/38/997b5a8e5076a2888f11baa44a473jpeg.jpeg?imageMogr/format/webp/" alt="logo">
-					</div>
-					<div class="desc">
-						<h3 class="shopName">CoCo都可（香槟广场店）</h3>
-						<p>
-							<i>蜂鸟专送 </i> /
-							<i>31分钟送达</i> /
-							<i>配送费¥4</i>
-							<img src="" alt="">
-						</p>
-						<p>
-							<span>公告：</span>
-							<span>欢迎光临，用餐高峰期请提前下单，谢谢。</span>
-						</p>
-						<div class="check-info">
-							><img src="" alt="">
-						</div>	
-					</div>
-				</a>
+		<div class="detail-wrap">
+			<div class="header">
 			</div>
-			<div class="activity">
-				<a href="">
-					<i>新</i>
-					<span>新用户下单立减17.0元(不与其它活动同享)</span>
-					<i>3个活动</i>
-				</a>
-			</div> -->
-		</div>
-		<div class="shop-tab">
-			<div class="product"><a href="">商品</a></div>
-			<div class="rate"><a href="">评价</a></div>
-		</div>
-		<div class="menu">
-			<div class="menu-left">
-				<ul class="menu-left-main">
-				</ul>
+			<div class="shop-tab">
+				<div class="product"><a href="">商品</a></div>
+				<div class="rate"><a href="">评价</a></div>
 			</div>
-			<div class="menu-right">
-				<div class="inner-wrapper">
-					<div class='food-item'>
-						<div class="food-title">
-							<h4 class="title">热销榜</h4>
-							<div class="desc">大家喜欢吃，才叫真好吃</div>
-							<div class="info">...</div>
-						</div>
-						<div class="food-info">
-							<div class="food-img">
-								<img src="https://fuss10.elemecdn.com/a/44/b645247b7b3c33aaed01a3f1b505ajpeg.jpeg?imageMogr/thumbnail/140x140/format/webp/quality/85" alt="">
+			<div class="menu">
+				<div class="menu-left">
+					<ul class="menu-left-main">
+					</ul>
+				</div>
+				<div class="menu-right">
+					<div class="inner-wrapper">
+						<!-- <div class="food-item">
+							<div class="food-title">
+								<h4 class="title">热销榜</h4>
+								<div class="desc">大家喜欢吃，才叫真好吃</div>
+								<div class="info">...</div>
 							</div>
-							<food class="food-main">
-								<div class="food-name">奶茶三兄弟/大杯-热</div>
-								<div class="food-desc">
-									<span>月售213份</span>
-									<span>好评率100%</span>
+							<div class="food-info">
+								<div class="food-img">
+									<img src="https://fuss10.elemecdn.com/a/44/b645247b7b3c33aaed01a3f1b505ajpeg.jpeg?imageMogr/thumbnail/140x140/format/webp/quality/85" alt="">
 								</div>
-								<div class="food-price">
-									<i class="sym">¥</i>
-									<i class="num">12起</i>
-								</div>
-							</food>
-						</div>
+								<food class="food-main">
+									<div class="food-name">奶茶三兄弟/大杯-热</div>
+									<div class="food-desc">
+										<span>月售213份</span>
+										<span>好评率100%</span>
+									</div>
+									<div class="food-price">
+										<i class="sym">¥</i>
+										<i class="num">12起</i>
+									</div>
+								</food>
+							</div>
+						</div> -->
+						
 					</div>
-					
+				</div>
+			</div>
+			<div class="cart">
+				<div class="cart-view">
+					<div class="cart-layer"></div>
+					<div class="cart-list">
+						<!-- <div class="cart-info">
+							<span class="cart-desc">第一佳沙拉鸡排拌饭+配菜难吃的得很</span>
+							<span class="cart-price"><i>¥</i>22</span>
+							<span class="minus operation">-</span>
+							<span class="num">0</span>
+							<span class="plus operation">+</span>
+						</div> -->
+					</div>
+				</div>
+				<div class="cart-img cart-bottom">
+					<img src="imgs/cart.png" alt="cart">
+				</div>
+				<div class="total-price cart-bottom">
+					<p>¥0</p>
+					<p class="postage"></p><!-- 配送费¥4 -->
+				</div>
+				<div class="to-start cart-bottom">
+					还差¥20元起送
 				</div>
 			</div>
 		</div>
-		<div class="cart"></div>
 	</div>
 	<div id="rlist" class="section" style="display: none;">
 		<!-- <a href="#detail">商家列表页</a> -->
@@ -198,6 +189,7 @@
 	<script src="js/zepto.js"></script>
 	<script src="lib/swipe.js"></script>
 	<script src="lib/Iscroll.js"></script>
+	<script src="js/singleCart.js"></script>
 	<script src="module/pageModule.js"></script>
 	<script src="module/addressModule.js"></script>
 	<script src="module/detailModule.js"></script>
