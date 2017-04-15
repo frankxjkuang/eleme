@@ -25,6 +25,7 @@ function routeControl() {
 
 	if(hash.indexOf('detail') !== -1) {
 		khash = 'detail';
+		detailModule.reset();
 		detailModule.loadInfo(hash);
 	}
 

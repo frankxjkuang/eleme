@@ -20,7 +20,6 @@ SingleCart.prototype.minus = function() {
 }
 SingleCart.prototype.render = function() {
 	// 渲染商品列表中的单个商品
-	console.log(this.name);
 
 	// 图片路径的拼接
 	var imgsrc = this.image_path || '';
@@ -32,7 +31,7 @@ SingleCart.prototype.render = function() {
 	} 
 
 	var str = 
-			'<div class="food-info">'+
+			'<div class="food-info" data-itemid="'+ this.id +'">'+
 				'<div class="food-img">'+
 					'<img src="'+ _imgsrc +'">'+
 				'</div>'+
@@ -61,7 +60,7 @@ SingleCart.prototype.renderCart = function() {
 	// ES6 中的方法
 	var str = 
 			`<div class="cart-info" data-itemid="${this.id}">
-				<span class="cart-desc">${this.description}</span>
+				<span class="cart-desc">${this.name}</span>
 				<span class="cart-price"><i>¥</i>${this.price}</span>
 				<span class="minus operation">-</span>
 				<span class="num">${this.num}</span>

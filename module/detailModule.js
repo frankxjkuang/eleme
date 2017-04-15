@@ -2,6 +2,13 @@ var detailModule = Object.create(pageModule);
 detailModule = $.extend(detailModule, {
 	name: '食物详情页',
 	dom: $('#detail'),
+	cartList: {
+		// 购物车的数据对象，缓存单个购物车的所有实例
+	},
+	init: function() {
+		this.bindEvent();
+		cartView.init(); // 购物车列表初始化
+	},
 	bindEvent: function() {
 		var _this = this;
 
@@ -21,15 +28,59 @@ detailModule = $.extend(detailModule, {
 			rightScroll.scrollToElement(dom, 400);
 		});
 
-		// 购物车视图的显示
+		// 购物车列表视图显示
 		var cartDom = _this.dom.find('.cart-view');
 		$('.cart-layer').click(function() {
 			cartDom.hide();
 		});
 
 		$('.cart-img').click(function() {
+			console.log('show&hide');
 			cartDom.toggle();
+			cartView.render();
 		});
+
+		// 单个购物车的加减法事件绑定 
+		$('.menu-right').on('click', '.plus', function(e) {
+			// 获取指定父节点
+			var closestDom = $(this).closest('.food-info');
+
+			var currId = closestDom.data('itemid');
+			var currModule = _this.cartList[currId];
+			currModule.plus();
+
+			// 动态的对购物车列表中的数据进行创建
+			cartView.list[currModule.id] = currModule;
+
+			var selector = '[data-itemid="'+ currId +'"]';
+			$(selector).find('.num').html(currModule.num);
+
+			Store(location.hash.split('-')[1], cartView.list);
+		});
+
+		$('.menu-right').on('click', '.minus', function(e) {
+			// 获取指定父节点
+			var closestDom = $(this).closest('.food-info');
+
+			var currId = closestDom.data('itemid');
+			var currModule = _this.cartList[currId];
+			currModule.minus();
+			if(currModule.num === 0) {
+				delete cartView.list[currModule.id];
+			}
+
+			// 动态的对购物车列表中的数据进行创建
+			var selector = '[data-itemid="'+ currId +'"]';
+			$(selector).find('.num').html(currModule.num);
+
+			Store(location.hash.split('-')[1], cartView.list);
+		});
+	},
+	reset: function() {
+		this.cartList = {};
+		var id = location.hash.split('-')[1];
+		cartView.list = Store(id);
+		console.log('store', cartView.list);
 	},
 	loadInfo: function(hash) {
 		// 加载信息
@@ -55,10 +106,8 @@ detailModule = $.extend(detailModule, {
 					html = '';
 				if(res.delivery_mode) {
 					is_solid = '蜂鸟专送 /';
-					console.log('true');
 				}
-				// e9a7271587acea919750d0304c0a29f6jpeg
-				// https://fuss10.elemecdn.com/e/9a/7271587acea919750d0304c0a29f6jpeg.jpeg?imageMogr/format/webp/
+				
 				var imgsrc = res.image_path;
 				var _imgsrc = 'https://fuss10.elemecdn.com/' + imgsrc.substring(0, 1) + '/' + imgsrc.substring(1, 3) + '/' + imgsrc.substr(3);
 				if(imgsrc.indexOf('jpeg') === -1) { // 图片格式为 png
@@ -198,9 +247,19 @@ detailModule = $.extend(detailModule, {
 		var html = '';
 		for(var i = 0, iLen = data.length; i < iLen; i++) {
 
+			for(var key in cartView.list) {
+				// 从缓存中得到对应的单个购物车的数量
+				if(cartView.list[key].id === data[i].item_id.toString()) {
+					data[i].num = cartView.list[key].num;
+					var cart = new SingleCart(data[i]);
+					cartView.list[key] = cart;
+				}
+			}
 			var cart = new SingleCart(data[i]);
-			html += cart.render();
+			html += cart.render();	
+			this.cartList[cart.id] = cart;
 		}
+
 		return html;
 	}
 

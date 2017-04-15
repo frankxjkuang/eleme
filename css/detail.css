@@ -179,6 +179,9 @@
 }
 #detail .num {
 	color: #666;
+	width: .2rem;
+    display: inline-block;
+    text-align: center;
 }
 #detail .plus {
 	background: #3190e8;
@@ -271,15 +274,15 @@
 	font-size: .14rem;
 }
 #detail .cart-price {
-	margin-left: .25rem;
-    margin-right: .25rem;
-    color: #f60;
+	color: #f60;
     font-size: .14rem;
+    width: .65rem;
+    text-align: center;
 }
 #detail .cart-price i {
 	font-size: .08rem;
 }
 #detail .cart-info .num {
- 	margin: 0 .04rem;
+ 	margin: 0 0;
 }
 
