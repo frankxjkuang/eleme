@@ -22,18 +22,23 @@ SingleCart.prototype.render = function() {
 	// 渲染商品列表中的单个商品
 
 	// 图片路径的拼接
-	var imgsrc = this.image_path || '';
-	var _imgsrc = 'https://fuss10.elemecdn.com/' + imgsrc.substring(0, 1) + '/' + imgsrc.substring(1, 3) + '/' + imgsrc.substr(3);
-	if(imgsrc.indexOf('jpeg') === -1) { // 图片格式为 png
-		_imgsrc = _imgsrc + '.png?imageMogr/thumbnail/140x140/format/webp/quality/85';
-	}else { // 图片格式为 jpeg
-		_imgsrc = _imgsrc + '.jpeg?imageMogr/thumbnail/140x140/format/webp/quality/85';
-	} 
+	if(this.image_path) {
+		var imgsrc = this.image_path;
+		var _imgsrc = 'https://fuss10.elemecdn.com/' + imgsrc.substring(0, 1) + '/' + imgsrc.substring(1, 3) + '/' + imgsrc.substr(3);
+		if(imgsrc.indexOf('jpeg') === -1) { // 图片格式为 png
+			_imgsrc = _imgsrc + '.png?imageMogr/thumbnail/140x140/format/webp/quality/85';
+		}else { // 图片格式为 jpeg
+			_imgsrc = _imgsrc + '.jpeg?imageMogr/thumbnail/140x140/format/webp/quality/85';
+		} 
+	} else {
+		var _imgsrc = this.name;
+	}
+	
 
 	var str = 
 			'<div class="food-info" data-itemid="'+ this.id +'">'+
 				'<div class="food-img">'+
-					'<img src="'+ _imgsrc +'">'+
+					'<img src="'+ _imgsrc +'" alt="'+ _imgsrc +'">'+
 				'</div>'+
 				'<div class="food-main">'+
 					'<div class="food-name">'+ this.name +'</div>'+
@@ -49,7 +54,7 @@ SingleCart.prototype.render = function() {
 				'</div>'+
 				'<div class="cart-operate">'+
 					'<div class="minus operation">-</div>'+
-					'<div class="num">0</div>'+
+					'<div class="num">'+ this.num +'</div>'+
 					'<div class="plus operation">+</div>'+
 				'</div>'+
 			'</div>';

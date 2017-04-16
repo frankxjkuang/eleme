@@ -17,11 +17,16 @@ detailModule = $.extend(detailModule, {
 			window.history.back();
 		});
 
+		// 清空购物车
+		$('#detail').on('click', '#clear-cart', function() {
+			cartView.clear();
+			$('.cart-view').hide();
+		});
+
 		// 菜单左边的导航点击事件
 		$('.menu-left').on('click', 'li', function() {
 			$(this).addClass('active');
 			$(this).siblings().removeClass('active');
-			console.log('scroll');
 
 			var selector = "[data-title='"+ $(this).text() +"']";
 			var dom = $(selector).get(0);
@@ -31,16 +36,15 @@ detailModule = $.extend(detailModule, {
 		// 购物车列表视图显示
 		var cartDom = _this.dom.find('.cart-view');
 		$('.cart-layer').click(function() {
-			cartDom.hide();
+			cartDom.toggle();
 		});
 
 		$('.cart-img').click(function() {
-			console.log('show&hide');
 			cartDom.toggle();
 			cartView.render();
 		});
 
-		// 单个购物车的加减法事件绑定 
+		// 单个商品的加减法事件绑定 
 		$('.menu-right').on('click', '.plus', function(e) {
 			// 获取指定父节点
 			var closestDom = $(this).closest('.food-info');
@@ -49,7 +53,7 @@ detailModule = $.extend(detailModule, {
 			var currModule = _this.cartList[currId];
 			currModule.plus();
 
-			// 动态的对购物车列表中的数据进行创建
+			// 动态的对商品列表中的数据进行创建
 			cartView.list[currModule.id] = currModule;
 
 			var selector = '[data-itemid="'+ currId +'"]';
@@ -65,12 +69,14 @@ detailModule = $.extend(detailModule, {
 			var currId = closestDom.data('itemid');
 			var currModule = _this.cartList[currId];
 			currModule.minus();
+
 			if(currModule.num === 0) {
 				delete cartView.list[currModule.id];
 			}
 
-			// 动态的对购物车列表中的数据进行创建
+			// 动态的对商品列表中的数据进行创建
 			var selector = '[data-itemid="'+ currId +'"]';
+
 			$(selector).find('.num').html(currModule.num);
 
 			Store(location.hash.split('-')[1], cartView.list);
@@ -79,8 +85,31 @@ detailModule = $.extend(detailModule, {
 	reset: function() {
 		this.cartList = {};
 		var id = location.hash.split('-')[1];
+
 		cartView.list = Store(id);
-		console.log('store', cartView.list);
+		console.log('Store取数据', cartView.list);
+
+		cartView.list = Store(id);
+		console.log('Store取数据', cartView.list);
+
+		cartView.list = Store(id);
+		console.log('Store取数据', cartView.list);
+
+		cartView.list = Store(id);
+		console.log('Store取数据', cartView.list);
+		var arrNum = [],
+			i = 0;
+		for(key in cartView.list) {
+			arrNum.push(cartView.list[key].num);
+		}
+		console.log('NUM:', arrNum);
+		cartView.list = Store(id);
+		for(key in cartView.list) {
+			cartView.list[key].num = arrNum[i];
+			console.log('change', cartView.list[key].num);
+			i++; 
+		}
+		console.log('Store取数据 last', cartView.list);
 	},
 	loadInfo: function(hash) {
 		// 加载信息
@@ -105,10 +134,12 @@ detailModule = $.extend(detailModule, {
 				var is_solid = '',
 					html = '';
 				if(res.delivery_mode) {
-					is_solid = '蜂鸟专送 /';
+					is_solid = '蜂鸟专送/';
+				}else {
+					is_solid = '商家配送/';
 				}
 				
-				var imgsrc = res.image_path;
+				var imgsrc = res.image_path || '';
 				var _imgsrc = 'https://fuss10.elemecdn.com/' + imgsrc.substring(0, 1) + '/' + imgsrc.substring(1, 3) + '/' + imgsrc.substr(3);
 				if(imgsrc.indexOf('jpeg') === -1) { // 图片格式为 png
 					_imgsrc = _imgsrc + '.png?imageMogr/format/webp/';
@@ -129,7 +160,7 @@ detailModule = $.extend(detailModule, {
 									'<h3 class="shopName">'+res.name+'</h3>'+
 									'<p>'+
 										'<i>'+ is_solid +'</i>'+
-										'<i>'+ res.piecewise_agent_fee.tips +' /</i>'+
+										'<i>'+ res.order_lead_time +'分钟送达/</i>'+
 										'<i>配送费¥'+ res.float_delivery_fee +'</i>'+
 										'<img src="" alt="">'+
 									'</p>'+
@@ -160,7 +191,7 @@ detailModule = $.extend(detailModule, {
 				} 
 
 				// 配送费
-				_this.dom.find('.postage').text(res.piecewise_agent_fee.description);
+				_this.dom.find('.postage').text(res.piecewise_agent_fee.tips);
 			},
 			error: function() {
 				console.log('获取数据失败...')
@@ -251,6 +282,7 @@ detailModule = $.extend(detailModule, {
 				// 从缓存中得到对应的单个购物车的数量
 				if(cartView.list[key].id === data[i].item_id.toString()) {
 					data[i].num = cartView.list[key].num;
+
 					var cart = new SingleCart(data[i]);
 					cartView.list[key] = cart;
 				}

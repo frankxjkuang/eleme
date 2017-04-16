@@ -17,6 +17,7 @@
 }
 #rlist .place {
 	display: flex;
+	overflow: hidden;
 	justify-content: space-between;
 }
 #rlist .weather {

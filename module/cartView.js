@@ -45,22 +45,22 @@ var cartView = {
 
 			Store(location.hash.split('-')[1], cartView.list);
 		});
-	},
+	},  
 	clear: function() {
 		for(var key in this.list) {
 			this.list[key].num = 0;
 
 			var selector = '[data-itemid="'+ this.list[key].id +'"]';
 			$(selector).find('.num').html(this.list[key].num); // 批量修改
-			// $('.cart-view').hide();
+			$('.cart-view').hide();
 			this.dom.html('');
 			delete this.list[key];
 		}
+		Store(location.hash.split('-')[1], {});
 	},
 	render: function() {
 		// 渲染购物车列表的视图
-		var html = '';
-		console.log(this.list);
+		var html = '<div class="cart-title"><span>购物车</span><span id="clear-cart">清空</span></div>';
 		for(var key in this.list) {
 			html += this.list[key].renderCart();
 		}

@@ -101,7 +101,6 @@ rlistModule = $.extend(rlistModule, {
 						child.find('.trans').text(res[i].delivery_mode.text);
 						child.find('.ontime').text('准时达');
 					}else {
-						console.log(child);
 						child.find('div').remove('.soprt');
 					}
 
@@ -163,7 +162,6 @@ rlistModule = $.extend(rlistModule, {
 				longitude:lng,
 			},
 			success: function(res) {
-				console.log(res);
 				// 温度
 				$('.temp').text(res.temperature+"°");
 				// 天气描述
@@ -196,7 +194,6 @@ rlistModule = $.extend(rlistModule, {
 				flags:['F']
 			},
 			success: function(res) {
-				console.log("轮播内容", res);	
 
 				var html = '';
 				for(var i = 0, iLen = res.length; i < iLen; i++) {
