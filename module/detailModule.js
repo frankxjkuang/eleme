@@ -83,33 +83,11 @@ detailModule = $.extend(detailModule, {
 		});
 	},
 	reset: function() {
-		this.cartList = {};
+		this.cartList = {}; 
 		var id = location.hash.split('-')[1];
 
 		cartView.list = Store(id);
-		console.log('Store取数据', cartView.list);
-
-		cartView.list = Store(id);
-		console.log('Store取数据', cartView.list);
-
-		cartView.list = Store(id);
-		console.log('Store取数据', cartView.list);
-
-		cartView.list = Store(id);
-		console.log('Store取数据', cartView.list);
-		var arrNum = [],
-			i = 0;
-		for(key in cartView.list) {
-			arrNum.push(cartView.list[key].num);
-		}
-		console.log('NUM:', arrNum);
-		cartView.list = Store(id);
-		for(key in cartView.list) {
-			cartView.list[key].num = arrNum[i];
-			console.log('change', cartView.list[key].num);
-			i++; 
-		}
-		console.log('Store取数据 last', cartView.list);
+		console.log('Store取数据', cartView.list);	
 	},
 	loadInfo: function(hash) {
 		// 加载信息
@@ -276,17 +254,19 @@ detailModule = $.extend(detailModule, {
 	},
 	renderFood: function(data) {
 		var html = '';
-		for(var i = 0, iLen = data.length; i < iLen; i++) {
 
+		for(var i = 0, iLen = data.length; i < iLen; i++) {	
 			for(var key in cartView.list) {
 				// 从缓存中得到对应的单个购物车的数量
 				if(cartView.list[key].id === data[i].item_id.toString()) {
+
 					data[i].num = cartView.list[key].num;
 
 					var cart = new SingleCart(data[i]);
 					cartView.list[key] = cart;
 				}
 			}
+			
 			var cart = new SingleCart(data[i]);
 			html += cart.render();	
 			this.cartList[cart.id] = cart;

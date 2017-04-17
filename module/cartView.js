@@ -16,7 +16,7 @@ var cartView = {
 
 			var currId = closestDom.data('itemid');
 			var currModule = _this.list[currId];
-			currModule.plus();
+			currModule.plus(); 
 
 			// 动态的对购物车列表中的数据进行创建
 			var selector = '[data-itemid="'+ currId +'"]';

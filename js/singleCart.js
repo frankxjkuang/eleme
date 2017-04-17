@@ -3,7 +3,7 @@
 function SingleCart(obj) {
 	this.id = obj.item_id; // 商品 id
 	this.price = obj.specfoods[0].price; // 单价
-	this.num = obj.mum || 0; // 数量
+	this.num = obj.num || 0; // 数量
 	this.name = obj.name; // 名称
 	this.description = obj.description; // 描述
 	this.month_sales = obj.month_sales; // 月售

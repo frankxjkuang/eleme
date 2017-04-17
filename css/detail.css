@@ -223,7 +223,8 @@
 	margin-left: .2rem;
 }
 #detail .total-price {
-	margin-left: -1.4rem;
+	margin-left: -1rem;
+    margin-top: .05rem;
 }
 #detail .to-start {
 	line-height: .48rem;
